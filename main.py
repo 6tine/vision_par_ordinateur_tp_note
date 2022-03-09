@@ -2,6 +2,7 @@ import cv2
 import glob
 from sklearn.cluster import KMeans
 import numpy as np
+import matplotlib.pyplot as plt
 
 def loadImages(chemins):
     images_classes_apprentissage = []
@@ -35,6 +36,11 @@ def vocabulaire(N,chemins):
     print(error_max)
     return inertia, error_max
 
+def plotMetrics(x, y, title):
+    plt.plot(x,y)
+    plt.title(title)
+    plt.show()
+
 def main():
     chemins = [
         './classes-caltech/elephant',
@@ -43,5 +49,13 @@ def main():
         './classes-caltech/wild_cat',
     ]
     vocabulaire(4, chemins)
-    
+    N_tab = [2,4,8,16,32,64,128,256,512,1024]
+    inerties_tab = []
+    errors_tab = []
+    for n in N_tab:
+        inertie, error = vocabulaire(n, chemins)
+        inerties_tab.append(inertie)
+        errors_tab.append(error)
+    plotMetrics(N_tab, inerties_tab, 'Variance totale en fonction de N')
+    plotMetrics(N_tab, errors_tab, 'Plus grande erreur en fonction de N')
 main()
