@@ -38,10 +38,11 @@ def vocabulaire(N,chemins):
     #On veut la distance max pour le cluster correpondant au point, pas celle par rapport à tous les clusters
     error_max = np.amax(distances)
     print("N = ", N, "erreur max : ", error_max)
-    return inertia, error_max
+    return inertia, error_max, centers
 
-def plotMetrics(x, y, title, filename):
+def plotMetrics(x, y, i, title, filename):
+    plt.figure(i)
     plt.plot(x,y)
     plt.title(title)
-    plt.show()
     plt.savefig(filename)
+    plt.show()
