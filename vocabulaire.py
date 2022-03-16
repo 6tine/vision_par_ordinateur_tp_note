@@ -40,7 +40,8 @@ def vocabulaire(N,chemins):
     print("N = ", N, "erreur max : ", error_max)
     return inertia, error_max
 
-def plotMetrics(x, y, title):
+def plotMetrics(x, y, title, filename):
     plt.plot(x,y)
     plt.title(title)
     plt.show()
+    plt.savefig(filename)

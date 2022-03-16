@@ -1,0 +1,2 @@
+def vectoriser(im, vocab):
+    
