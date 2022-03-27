@@ -31,7 +31,7 @@ def vocabulaire(N,chemins):
     kMeans.fit(np.array(descs_tab))
     centers = kMeans.cluster_centers_
     inertia = kMeans.inertia_
-    np.savetxt('matrice_vocabulaire.txt',centers)
+    np.savetxt('matrice_vocabulaire_512_clusters.txt',centers)
     distances = kMeans.transform(np.array(descs_tab))
     #Faire le maximum deux fois (essayer de récupérer un premier max sous forme de 
     #vecteur et faire un autre max dessus. Voir pour faire un reshape de kmeans.transform)

@@ -29,6 +29,15 @@ def vectoriserTests():
     ]
     matrice = vectoriserFromPaths(chemins, "tests.pickle")
     classes_vectors = matrice[1]
-    X_test = np.concatenate((classes_vectors[0], classes_vectors[1], classes_vectors[2], classes_vectors[3]))
-    X_test = X_test.reshape(len(X_test), -1)
-    return X_test
+    files_vectors = matrice[0]
+    X_vectors = np.concatenate((classes_vectors[0], classes_vectors[1], classes_vectors[2], classes_vectors[3]))
+    X_vectors = X_vectors.reshape(len(X_vectors), -1)
+    X_files = np.concatenate((files_vectors[0], files_vectors[1], files_vectors[2], files_vectors[3]))
+    X_files = X_files.reshape(len(X_files), -1)
+    X = []
+    for i in range(len(X_files)):
+        X.append([X_vectors[i],X_files[i]])
+    #X = np.asarray(X)
+    print('X')
+    print(X)
+    return X

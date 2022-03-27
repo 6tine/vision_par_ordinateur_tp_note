@@ -7,7 +7,6 @@ def vectoriser(im, vocab):
     surf = cv2.xfeatures2d.SURF_create()
     #On extrait les SURF de l'image
     (kps, descs_tab) = surf.detectAndCompute(im,None)
-    #vector = np.array([[0 for j in range(len(vocab[i]))] for i in range(len(vocab))])
     vector = np.zeros((len(vocab), len(vocab[0])))
     for i in range(len(descs_tab)):
         for j in range(len(descs_tab[i])):

@@ -6,4 +6,4 @@ chemins = [
         './classes-caltech/panda',
         './classes-caltech/wild_cat',
     ]
-vectoriserFromPaths(chemins, "base.pickle")
+vectoriserFromPaths(chemins, "base_512_clusters.pickle")
