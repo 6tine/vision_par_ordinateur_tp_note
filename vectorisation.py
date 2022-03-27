@@ -19,7 +19,7 @@ def vectoriser(im, vocab):
     return vector
 
 def vectoriserFromPaths(chemins, pickle_name):
-    with open('matrice_vocabulaire_512_clusters.txt', 'r') as f:
+    with open('matrice_vocabulaire_4_clusters.txt', 'r') as f:
         vocab = [[float(val) for val in line.split(' ')] for line in f]
     vocab_np = np.asarray(vocab)
     list_vector = []

@@ -4,7 +4,7 @@ import numpy as np
 from vectorisation import vectoriserFromPaths
 
 def getXandY(classes):
-    matrice = pickle.load(open("base_512_clusters.pickle", "rb"))
+    matrice = pickle.load(open("base_4_clusters.pickle", "rb"))
     Y = []
     classes_filenames = matrice[0]
     classes_vectors = matrice[1]
