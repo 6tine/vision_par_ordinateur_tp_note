@@ -19,6 +19,7 @@ def main():
     print("debut s.tranform : ")
     print(t)
     print("fin s.tranform : ")
+    #Pour l'éléphant il y a 65 image et pour le léopards il y en a 200
     m1 = statistics.mean(t[0:64][0])
     m2 = statistics.mean(t[65:264][0])
     print('moyenne m1 : ', m1)
