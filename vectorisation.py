@@ -7,7 +7,8 @@ def vectoriser(im, vocab):
     surf = cv2.xfeatures2d.SURF_create()
     #On extrait les SURF de l'image
     (kps, descs_tab) = surf.detectAndCompute(im,None)
-    vector = np.array([[0 for j in range(len(vocab[i]))] for i in range(len(vocab))])
+    #vector = np.array([[0 for j in range(len(vocab[i]))] for i in range(len(vocab))])
+    vector = np.zeros((len(vocab), len(vocab[0])))
     for i in range(len(descs_tab)):
         for j in range(len(descs_tab[i])):
             curr_desc = descs_tab[i][j]
@@ -19,8 +20,9 @@ def vectoriser(im, vocab):
     return vector
 
 def vectoriserFromPaths(chemins, pickle_name):
-    with open('matrice_vocabulaire.txt', 'r') as f:
+    with open('matrice_vocabulaire_512_clusters.txt', 'r') as f:
         vocab = [[float(val) for val in line.split(' ')] for line in f]
+    vocab_np = np.asarray(vocab)
     list_vector = []
     files_list = []
     i = 0
@@ -31,7 +33,7 @@ def vectoriserFromPaths(chemins, pickle_name):
         for file in glob.glob(c+"/*.jpg"):
             print('num : ', i)
             image = cv2.imread(file)
-            vector = vectoriser(image, vocab)
+            vector = vectoriser(image, vocab_np)
             one_class_vectors.append(vector)
             one_class_files.append(file)
             i+=1
@@ -47,7 +49,7 @@ def vectoriserFromPaths(chemins, pickle_name):
 def test():
     image_filename = './classes-caltech/elephant/image_0004.jpg'
     image = cv2.imread(image_filename)
-    with open('matrice_vocabulaire.txt', 'r') as f:
+    with open('matrice_vocabulaire_512_clusters.txt', 'r') as f:
         vocab = [[float(val) for val in line.split(' ')] for line in f]
     print(vocab)
     vector = vectoriser(image, vocab)
