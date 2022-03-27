@@ -29,5 +29,5 @@ def main():
     print("---- Nombre de succès : ", nbCorrect)
     print("---- Nombre d'erreur : ", nbPredict - nbCorrect)
     print("---- taux de succès : ", (nbCorrect / nbPredict) * 100)
-
+    print('résultat : ', result)
 main()
